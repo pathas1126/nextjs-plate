@@ -6,8 +6,8 @@ export function reportWebVitals(metric: NextWebVitalsMetric) {
   if (metric.label === webVital) console.log(metric);
 }
 
-const MyApp = ({ Component, pageProps }: AppProps) => {
+const App = ({ Component, pageProps }: AppProps) => {
   return <Component {...pageProps} />;
 };
 
-export default MyApp;
+export default App;

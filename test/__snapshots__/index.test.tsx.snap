@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Index renders Index without crashing 1`] = `
+<div>
+  <div>
+    <header>
+      <nav />
+    </header>
+    <h1>
+      Hello Next.js 👋
+    </h1>
+    <footer>
+      <hr />
+      <span>
+        I'm here to stay (Footer)
+      </span>
+    </footer>
+  </div>
+</div>
+`;

@@ -1,9 +1,9 @@
 import Layout from "../components/Layout";
 
-const IndexPage = () => (
+const Index = () => (
   <Layout title="Index Page">
     <h1>Hello Next.js 👋</h1>
   </Layout>
 );
 
-export default IndexPage;
+export default Index;
