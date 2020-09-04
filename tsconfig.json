@@ -1,25 +1,25 @@
 {
   "compilerOptions": {
-    "allowJs": true,
-    "baseUrl": ".",
-    "alwaysStrict": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "lib": ["dom", "es2017"],
-    "module": "esnext",
-    "moduleResolution": "node",
-    "noEmit": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "strictNullChecks": true,
-    "noImplicitAny": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "target": "esnext"
+    "allowJs": true, // 자바스크립트 컴파일 허용
+    "target": "esnext", // 사용할 ES 버전 설정, 기본은 ES3
+    // "baseUrl": ".", // 모듈 import 시 위치 재지정
+    "esModuleInterop": true, // CommonJS와 ESM 간의 상호 운용성 추가
+    "forceConsistentCasingInFileNames": true, // 같은 파일에 대한 일관된 참조만 허용
+    "isolatedModules": true, // 각 파일을 분리된 모듈로 트랜스파일
+    "jsx": "preserve", // 결과 파일의 확장자를 jsx로 지정
+    "lib": ["dom", "es2017"], // 컴파일에 포함될 라이브러리 파일 목록
+    "module": "esnext", // 컴파일된 모듈의 결과물을 ES 확정 예상 모듈 시스템으로 결정
+    "moduleResolution": "node", // 모듈 해석 방법은 Node.js로 설정
+    "noEmit": true, // 결과 파일을 내보낼 지 여부
+    "noFallthroughCasesInSwitch": true, // switch 문에서 fallthrough 케이스에 대한 에러 보고
+    "noUnusedLocals": true, // 미사용 지역 변수에 대한 에러 보고
+    "noUnusedParameters": true, // 미사용 파라미터 에러 보고
+    "strict": true, // 모든 엄격한 타입 체크 허용
+    "strictNullChecks": true, // 엄격한 null 체크
+    "noImplicitAny": true, // any 타입으로 구현된 표현식 혹은 정의 에러 처리 여부
+    "alwaysStrict": true, // 모든 소스 파일에 "use strict" 추가
+    "resolveJsonModule": true, // Json 파일을 모듈로 허용
+    "skipLibCheck": true // 정의 파일의 타입 확인을 건너 뜀
   },
   "exclude": ["node_modules"],
   "include": ["**/*.ts", "**/*.tsx"]

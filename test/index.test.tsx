@@ -1,13 +1,48 @@
-import { render } from "@testing-library/react";
+import { render, fireEvent, waitFor } from "@testing-library/react";
 import Index from "../pages/index";
+import { Provider } from "react-redux";
+import store from "../store/index";
+import axios from "axios";
+import MockAdapter from "axios-mock-adapter";
 
-describe("Index", () => {
-  it("renders Index without crashing", () => {
-    const utils = render(<Index />);
-    expect(utils.container).toMatchSnapshot();
-  });
+describe("<Index/>", () => {
+  const mock = new MockAdapter(axios, { delayResponse: 200 });
+  mock.onGet("https://jsonplaceholder.typicode.com/posts");
+
   it("render Hello World", () => {
-    const { getByText } = render(<Index />);
+    const { getByText } = render(
+      <Provider store={store}>
+        <Index />
+      </Provider>
+    );
     getByText("Hello Next.js 👋");
   });
+  it("count up correct", () => {
+    const { getByText } = render(
+      <Provider store={store}>
+        <Index />
+      </Provider>
+    );
+    const increaseButton = getByText("+");
+    const count = getByText("2");
+    fireEvent.click(increaseButton);
+    fireEvent.click(increaseButton);
+    expect(count).toHaveTextContent("4");
+    // expect(count.textContent).toBe("2");
+  });
+  it("count down async correct", async () => {
+    const { getByText } = render(
+      <Provider store={store}>
+        <Index />
+      </Provider>
+    );
+    const decreaseButton = getByText("-");
+    const count = getByText("4");
+    fireEvent.click(decreaseButton);
+    fireEvent.click(decreaseButton);
+    await waitFor(() => expect(count).toHaveTextContent("2"), {
+      timeout: 1500,
+    });
+  });
+  it("getStaticProps test", async () => {});
 });
