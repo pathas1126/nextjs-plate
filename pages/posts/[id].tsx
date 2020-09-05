@@ -13,7 +13,7 @@ const PostOne = ({ post }: PostOneProps): JSX.Element => {
   const router: NextRouter = useRouter();
   return (
     <Layout>
-      {router.isFallback && <h4>로딩...</h4>}
+      {router?.isFallback && <h4>로딩...</h4>}
       <h2>{post.title}</h2>
       <h3>{post.body}</h3>
     </Layout>
