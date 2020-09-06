@@ -1,37 +1,19 @@
-import { Model } from "@rematch/core";
-
-export interface Count extends Model {
-  name: string;
-  state: number;
-  reducers: {
-    increment(state: number, payload: number): number;
-    decrement(state: number, payload: number): number;
-  };
-  effects: (
-    disaptch: any
-  ) => {
-    incrementAsync(payload: number, rootState: number): void;
-    decrementAsync(payload: number, rootState: number): void;
-  };
-}
-
-const count: Count = {
-  name: "count",
+const count = {
   state: 2,
   reducers: {
-    increment(state, payload) {
+    increment(state: number, payload: number): number {
       return state + payload;
     },
-    decrement(state, payload) {
+    decrement(state: number, payload: number): number {
       return state - payload;
     },
   },
-  effects: (dispatch: Dispatch) => ({
-    async incrementAsync(payload, _) {
+  effects: (dispatch: any) => ({
+    async incrementAsync(payload: number, _: any): Promise<void> {
       await new Promise((resolve) => setTimeout(resolve, 1000));
       dispatch.count.increment(payload);
     },
-    async decrementAsync(payload, _) {
+    async decrementAsync(payload: number, _: any): Promise<void> {
       await new Promise((resolve) => setTimeout(resolve, 1000));
       dispatch.count.decrement(payload);
     },

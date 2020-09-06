@@ -5,18 +5,19 @@ import Link from "next/link";
 import Layout from "../../components/common/Layout";
 
 const Posts = (): JSX.Element => {
-  const dispatch = useDispatch<Dispatch>();
-  const posts: Post[] = useSelector((state: RootState) => state.posts.list);
-  const loading: boolean = useSelector(
-    (state: RootState) => state.posts.loading
+  const dispatch = useDispatch();
+  const posts: Post[] = useSelector((state: RootState) => {
+    return state.posts.list;
+  });
+  const postLoading = useSelector(
+    (state: RootState) => state.loading.models.posts
   );
-
   return (
     <Layout>
       <div>
         <button onClick={() => dispatch.posts.getPostsAsync()}>getPosts</button>
-        {loading && !posts && <h2>로딩중입니다...</h2>}
-        {!loading && (
+        {postLoading && !posts && <h2>로딩중입니다...</h2>}
+        {!postLoading && (
           <ul>
             {posts.map((post) => (
               <li key={post.id}>

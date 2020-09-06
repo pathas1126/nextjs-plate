@@ -1,6 +1,4 @@
-import { request, RestMethod } from "../../utils/request";
-
-import { Model } from "@rematch/core";
+import { RestMethod, request } from "../../utils/request";
 
 export interface Post {
   userId: number;
@@ -11,19 +9,15 @@ export interface Post {
 
 export interface PostState {
   list: Post[];
-  loading: boolean;
 }
 
-const posts: Model = {
-  name: "posts",
+const posts = {
   state: {
     list: [],
-    loading: false,
   },
   reducers: {
     addPosts(state: PostState, payload: Post[]): PostState {
       state.list = payload;
-      state.loading = false;
       return state;
     },
     deleteOnePost(state: PostState, id: number): PostState {
@@ -31,14 +25,9 @@ const posts: Model = {
       state.list = filteredPosts;
       return state;
     },
-    setLoading(state: PostState, loadingState: boolean): PostState {
-      state.loading = loadingState;
-      return state;
-    },
   },
-  effects: (dispatch: Dispatch) => ({
+  effects: (dispatch: any) => ({
     async getPostsAsync() {
-      dispatch.posts.setLoading(true);
       const url: string = "https://jsonplaceholder.typicode.com/posts";
       const method: RestMethod = RestMethod.GET;
       const response = await request({ url, method });

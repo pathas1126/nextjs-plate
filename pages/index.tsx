@@ -2,8 +2,11 @@ import Layout from "../components/common/Layout";
 
 import { useSelector, useDispatch } from "react-redux";
 const Index = () => {
-  const count: number = useSelector((state: RootState) => state.count);
-  const dispatch = useDispatch<Dispatch>();
+  const count: number = useSelector((state: RootState) => {
+    console.log(state);
+    return state.count;
+  });
+  const dispatch = useDispatch();
 
   return (
     <Layout title="Index Page">
