@@ -6,7 +6,7 @@
 # 핵심 구성
 - Next.js
 - TypeScript
-- Rematch + Immer Plugin + Loading Plugin(추가 예정...)
+- Rematch + Immer Plugin + Loading Plugin
 - @testing-library/react + jest
 
 # 보조
