@@ -2,13 +2,8 @@ import { render, fireEvent, waitFor } from "@testing-library/react";
 import Index from "../pages/index";
 import { Provider } from "react-redux";
 import store from "../store/index";
-import axios from "axios";
-import MockAdapter from "axios-mock-adapter";
 
 describe("<Index/>", () => {
-  const mock = new MockAdapter(axios, { delayResponse: 200 });
-  mock.onGet("https://jsonplaceholder.typicode.com/posts");
-
   it("render Hello World", () => {
     const { getByText } = render(
       <Provider store={store}>

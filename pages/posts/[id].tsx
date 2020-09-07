@@ -3,7 +3,7 @@ import Layout from "../../components/common/Layout";
 import { request, RestMethod } from "../../utils/request";
 import { Post } from "../../store/models/posts";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { useRouter, NextRouter } from "next/dist/client/router";
+import { useRouter, NextRouter } from "next/router";
 
 interface PostOneProps {
   post: Post;
